@@ -31,3 +31,7 @@ function bitCount(mask) {
   }
   return n;
 }
+
+function digitOf(mask) {
+  return 31 - Math.clz32(mask) + 1;
+}
