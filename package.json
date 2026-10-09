@@ -1,0 +1,11 @@
+{
+  "name": "sudoku-solver",
+  "version": "0.1.0",
+  "description": "Sudoku solver with constraint propagation and backtracking",
+  "main": "sudoku.js",
+  "bin": { "sudoku": "cli.js" },
+  "scripts": {
+    "test": "node --test"
+  },
+  "license": "MIT"
+}
