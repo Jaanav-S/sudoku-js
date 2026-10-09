@@ -35,3 +35,16 @@ function bitCount(mask) {
 function digitOf(mask) {
   return 31 - Math.clz32(mask) + 1;
 }
+
+function parse(text) {
+  const chars = text.replace(/[\s|+-]/g, '');
+  if (chars.length !== 81) {
+    throw new Error(`expected 81 cells, got ${chars.length}`);
+  }
+  return [...chars].map((c) => {
+    if (c === '.' || c === '0') return 0;
+    const d = Number(c);
+    if (!Number.isInteger(d) || d < 1 || d > 9) throw new Error(`bad cell: ${c}`);
+    return d;
+  });
+}
