@@ -95,3 +95,26 @@ function candidatesFor(grid) {
   }
   return cands;
 }
+
+function* search(cands) {
+  let best = -1;
+  let bestCount = 10;
+  for (let cell = 0; cell < 81; cell++) {
+    const n = bitCount(cands[cell]);
+    if (n > 1 && n < bestCount) {
+      best = cell;
+      bestCount = n;
+    }
+  }
+  if (best === -1) {
+    yield cands.map(digitOf);
+    return;
+  }
+  let options = cands[best];
+  while (options) {
+    const bit = options & -options;
+    const copy = cands.slice();
+    if (assign(copy, best, bit)) yield* search(copy);
+    options &= ~bit;
+  }
+}
