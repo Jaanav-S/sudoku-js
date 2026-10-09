@@ -14,3 +14,11 @@ for (let i = 0; i < 9; i++) {
   }
   UNITS.push(row, col, box);
 }
+
+const UNITS_OF = Array.from({ length: 81 }, (_, cell) => UNITS.filter((u) => u.includes(cell)));
+
+const PEERS = Array.from({ length: 81 }, (_, cell) => {
+  const set = new Set(UNITS_OF[cell].flat());
+  set.delete(cell);
+  return [...set];
+});
