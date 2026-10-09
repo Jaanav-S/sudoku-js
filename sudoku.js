@@ -58,3 +58,22 @@ function format(grid) {
   }
   return lines.join('\n');
 }
+
+// Remove `digitMask` from a cell's candidates and propagate. Returns false on contradiction.
+function eliminate(cands, cell, digitMask) {
+  if (!(cands[cell] & digitMask)) return true;
+  cands[cell] &= ~digitMask;
+  const left = cands[cell];
+  if (left === 0) return false;
+  if (bitCount(left) === 1) {
+    for (const peer of PEERS[cell]) {
+      if (!eliminate(cands, peer, left)) return false;
+    }
+  }
+  for (const unit of UNITS_OF[cell]) {
+    const places = unit.filter((c) => cands[c] & digitMask);
+    if (places.length === 0) return false;
+    if (places.length === 1 && !assign(cands, places[0], digitMask)) return false;
+  }
+  return true;
+}
