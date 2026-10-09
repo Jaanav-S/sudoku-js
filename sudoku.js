@@ -118,3 +118,10 @@ function* search(cands) {
     options &= ~bit;
   }
 }
+
+function solve(grid) {
+  const cands = candidatesFor(grid);
+  if (!cands) return null;
+  const first = search(cands).next();
+  return first.done ? null : first.value;
+}
