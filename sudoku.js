@@ -87,3 +87,11 @@ function assign(cands, cell, digitMask) {
   }
   return true;
 }
+
+function candidatesFor(grid) {
+  const cands = new Array(81).fill(ALL);
+  for (let cell = 0; cell < 81; cell++) {
+    if (grid[cell] && !assign(cands, cell, 1 << (grid[cell] - 1))) return null;
+  }
+  return cands;
+}
