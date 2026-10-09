@@ -48,3 +48,13 @@ function parse(text) {
     return d;
   });
 }
+
+function format(grid) {
+  const lines = [];
+  for (let r = 0; r < 9; r++) {
+    if (r && r % 3 === 0) lines.push('------+-------+------');
+    const cells = grid.slice(r * 9, r * 9 + 9).map((d) => (d ? String(d) : '.'));
+    lines.push([cells.slice(0, 3), cells.slice(3, 6), cells.slice(6)].map((g) => g.join(' ')).join(' | '));
+  }
+  return lines.join('\n');
+}
