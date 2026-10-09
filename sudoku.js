@@ -77,3 +77,13 @@ function eliminate(cands, cell, digitMask) {
   }
   return true;
 }
+
+function assign(cands, cell, digitMask) {
+  let others = cands[cell] & ~digitMask;
+  while (others) {
+    const bit = others & -others;
+    if (!eliminate(cands, cell, bit)) return false;
+    others &= ~bit;
+  }
+  return true;
+}
