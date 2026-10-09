@@ -22,3 +22,12 @@ const PEERS = Array.from({ length: 81 }, (_, cell) => {
   set.delete(cell);
   return [...set];
 });
+
+function bitCount(mask) {
+  let n = 0;
+  while (mask) {
+    mask &= mask - 1;
+    n++;
+  }
+  return n;
+}
