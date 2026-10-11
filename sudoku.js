@@ -135,3 +135,12 @@ function countSolutions(grid, limit = Infinity) {
   }
   return count;
 }
+
+function isSolved(grid) {
+  return UNITS.every((unit) => {
+    const seen = new Set(unit.map((c) => grid[c]));
+    return seen.size === 9 && !seen.has(0);
+  });
+}
+
+module.exports = { parse, format, solve, countSolutions, isSolved, PEERS, UNITS };
