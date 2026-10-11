@@ -125,3 +125,13 @@ function solve(grid) {
   const first = search(cands).next();
   return first.done ? null : first.value;
 }
+
+function countSolutions(grid, limit = Infinity) {
+  const cands = candidatesFor(grid);
+  if (!cands) return 0;
+  let count = 0;
+  for (const _ of search(cands)) {
+    if (++count >= limit) break;
+  }
+  return count;
+}
