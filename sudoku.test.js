@@ -20,3 +20,9 @@ test('parse accepts dots, zeros and separators', () => {
 test('parse rejects the wrong length', () => {
   assert.throws(() => parse('123'));
 });
+
+test('solves an easy puzzle', () => {
+  const solution = solve(parse(EASY));
+  assert.ok(isSolved(solution));
+  assert.strictEqual(solution.slice(0, 9).join(''), '534678912');
+});
