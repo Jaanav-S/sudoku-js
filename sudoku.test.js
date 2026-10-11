@@ -16,3 +16,7 @@ test('parse accepts dots, zeros and separators', () => {
   assert.strictEqual(grid.length, 81);
   assert.deepStrictEqual(parse(format(grid)), grid);
 });
+
+test('parse rejects the wrong length', () => {
+  assert.throws(() => parse('123'));
+});
