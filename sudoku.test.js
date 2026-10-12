@@ -36,3 +36,8 @@ test('keeps the given clues', () => {
   const solution = solve(grid);
   grid.forEach((d, i) => d && assert.strictEqual(solution[i], d));
 });
+
+test('detects contradictions', () => {
+  const bad = parse('55' + '.'.repeat(79));
+  assert.strictEqual(solve(bad), null);
+});
