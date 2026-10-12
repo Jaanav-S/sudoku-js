@@ -26,3 +26,7 @@ test('solves an easy puzzle', () => {
   assert.ok(isSolved(solution));
   assert.strictEqual(solution.slice(0, 9).join(''), '534678912');
 });
+
+test('solves a hard puzzle', () => {
+  assert.ok(isSolved(solve(parse(HARD))));
+});
