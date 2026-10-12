@@ -41,3 +41,8 @@ test('detects contradictions', () => {
   const bad = parse('55' + '.'.repeat(79));
   assert.strictEqual(solve(bad), null);
 });
+
+test('counts multiple solutions', () => {
+  assert.strictEqual(countSolutions(parse(EASY), 2), 1);
+  assert.strictEqual(countSolutions(parse('.'.repeat(81)), 2), 2);
+});
