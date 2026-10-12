@@ -30,3 +30,9 @@ test('solves an easy puzzle', () => {
 test('solves a hard puzzle', () => {
   assert.ok(isSolved(solve(parse(HARD))));
 });
+
+test('keeps the given clues', () => {
+  const grid = parse(EASY);
+  const solution = solve(grid);
+  grid.forEach((d, i) => d && assert.strictEqual(solution[i], d));
+});
