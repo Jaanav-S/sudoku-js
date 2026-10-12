@@ -24,3 +24,8 @@ Each cell keeps a 9-bit mask of the digits it could still hold.
    is solved or a contradiction appears.
 
 Most newspaper puzzles are solved by propagation alone.
+
+## Uniqueness
+
+`countSolutions(grid, 2)` stops after finding two solutions, which is a
+cheap way to check that a puzzle has exactly one answer.
