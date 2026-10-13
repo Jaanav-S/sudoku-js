@@ -29,3 +29,9 @@ Most newspaper puzzles are solved by propagation alone.
 
 `countSolutions(grid, 2)` stops after finding two solutions, which is a
 cheap way to check that a puzzle has exactly one answer.
+
+## Tests
+
+```
+npm test
+```
